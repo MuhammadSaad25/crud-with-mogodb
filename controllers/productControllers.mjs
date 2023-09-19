@@ -13,6 +13,7 @@ export const getAllProducts = async (req, res) => {
 
     res.status(200).send({ message: "All Products fetched", data });
   } catch (err) {
+    console.log(err);
     res.status(500).send({ message: err.message || "Unknown Error" });
   }
 };
@@ -51,7 +52,7 @@ export const addProduct = async (req, res) => {
   }
   try {
     const products = db.collection("products");
-    console.log("uhuhhuuhu", products);
+    // console.log("uhuhhuuhu", products);
     const data = await products.insertOne({ name, price, description });
 
     if (data.acknowledged)
